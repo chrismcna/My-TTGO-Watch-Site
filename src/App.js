@@ -16,7 +16,7 @@ import About from './pages/about';
 //device components
 import { Provider } from './contexts/device-context';
 import Weather from './pages/device/weather';
-
+import Tests from './pages/device/tests';
 
 import logo from './logo.svg';
 import './App.css';
@@ -37,6 +37,11 @@ function App() {
             <Route path="/device/weather">
               <Weather />
             </Route>
+
+            <Route path="/device/tests">
+              <Tests />
+            </Route>
+            
 
             <Route path="/">
               <Home />

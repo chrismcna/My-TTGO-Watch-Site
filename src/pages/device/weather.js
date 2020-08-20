@@ -31,17 +31,12 @@ export default props => {
         })
         .then(characteristic  => {
 
-            // Writing 1 is the signal to reset energy expended.
-            //var enc = new TextEncoder(); // always utf-8
-            //let resetEnergyExpended = enc.encode("GB: {}\n");
-            const enc = new TextEncoder('ascii');
 
-            return characteristic.writeValue(enc.encode("G"))
-            .then(() => characteristic.writeValue(enc.encode("B")))
-            .then(() => characteristic.writeValue(enc.encode(":")))
-            .then(() => characteristic.writeValue(enc.encode("{")))
-            .then(() => characteristic.writeValue(enc.encode("}")))
-            .then(() => characteristic.writeValue(enc.encode("\n")));
+            const enc = new TextEncoder();
+            return characteristic.writeValue(enc.encode('GB:{"t":"notify","src":"Whatsapp"} \n'))
+            .then(() => characteristic.writeValue(Uint8Array.of(0x03)));
+
+
         }).catch(error => {
             alert('Argh! ' + error);
         });
@@ -85,12 +80,7 @@ export default props => {
             </ValidatorForm>
 
             
-            <script src="https://github.com/inexorabletash/text-encoding/encoding-indexes.js"></script>
-            <script src="https://github.com/inexorabletash/text-encoding/encoding.js"></script>
-
-            <script>
-                window.TextEncoder = window.TextDecoder = null;
-            </script>
+           
         </>
     );
 }

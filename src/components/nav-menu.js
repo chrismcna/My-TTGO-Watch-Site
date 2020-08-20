@@ -51,7 +51,11 @@ export default  props => {
                 </ListItem>
                 <ListItem button component="a" href="https://github.com/sharandac/My-TTGO-Watch">
                     <ListItemIcon><GitHubIcon /></ListItemIcon>
-                    <ListItemText primary={"GitHub"} />
+                    <ListItemText primary={"GitHub - Watch"} />
+                </ListItem>
+                <ListItem button component="a" href="https://github.com/chrismcna/My-TTGO-Watch-Site">
+                    <ListItemIcon><GitHubIcon /></ListItemIcon>
+                    <ListItemText primary={"GitHub - Site"} />
                 </ListItem>
             </List>
             <Divider />
@@ -77,6 +81,10 @@ export default  props => {
                 <ListItem button component={Link} to="/device/weather" disabled={bluetoothDevice == null}>
                     <ListItemIcon><WbSunnyIcon /></ListItemIcon>
                     <ListItemText primary={"Weather"} />
+                </ListItem>
+                <ListItem button component={Link} to="/device/tests" disabled={bluetoothDevice == null}>
+                    <ListItemIcon><WbSunnyIcon /></ListItemIcon>
+                    <ListItemText primary={"Tests"} />
                 </ListItem>
             </List>
         </>
