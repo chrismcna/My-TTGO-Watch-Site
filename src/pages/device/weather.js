@@ -33,7 +33,13 @@ export default props => {
 
 
             const enc = new TextEncoder();
-            return characteristic.writeValue(enc.encode('GB:{"t":"notify","src":"Whatsapp"} \n'))
+            return characteristic.writeValue(enc.encode(JSON.stringify({
+                t:"conf",
+                app: "weather",
+                apikey:apiKey,
+                lat:lat,
+                lon:long
+            }) +'\n'))
             .then(() => characteristic.writeValue(Uint8Array.of(0x03)));
 
 
