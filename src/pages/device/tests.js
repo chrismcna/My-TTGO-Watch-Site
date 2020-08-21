@@ -10,7 +10,6 @@ export default props => {
 
    
     const handleWhatsAppTest = React.useCallback(() => {
-
         bluetoothDevice.gatt.connect()
         .then(server => {
             return server.getPrimaryService('6e400001-b5a3-f393-e0a9-e50e24dcca9e');
