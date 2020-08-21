@@ -5,12 +5,17 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
+
 import HomeIcon from '@material-ui/icons/Home';
 import InfoIcon from '@material-ui/icons/Info';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import BluetoothIcon from '@material-ui/icons/Bluetooth';
 import BluetoothDisabledIcon from '@material-ui/icons/BluetoothDisabled';
+import WatchIcon from '@material-ui/icons/Watch';
+import WifiIcon from '@material-ui/icons/Wifi';
 import WbSunnyIcon from '@material-ui/icons/WbSunny';
+import HourglassFullIcon from '@material-ui/icons/HourglassFull';
+
 
 import { Link } from "react-router-dom";
 
@@ -77,13 +82,21 @@ export default  props => {
                         </ListItem>
                     )
                 }
-                
+
+                <ListItem button component={Link} to="/device/watch" disabled={bluetoothDevice == null}>
+                    <ListItemIcon><WatchIcon /></ListItemIcon>
+                    <ListItemText primary={"Watch"} />
+                </ListItem>
+                <ListItem button component={Link} to="/device/wifi" disabled={bluetoothDevice == null}>
+                    <ListItemIcon><WifiIcon /></ListItemIcon>
+                    <ListItemText primary={"Wifi"} />
+                </ListItem>
                 <ListItem button component={Link} to="/device/weather" disabled={bluetoothDevice == null}>
                     <ListItemIcon><WbSunnyIcon /></ListItemIcon>
                     <ListItemText primary={"Weather"} />
                 </ListItem>
                 <ListItem button component={Link} to="/device/tests" disabled={bluetoothDevice == null}>
-                    <ListItemIcon><WbSunnyIcon /></ListItemIcon>
+                    <ListItemIcon><HourglassFullIcon /></ListItemIcon>
                     <ListItemText primary={"Tests"} />
                 </ListItem>
             </List>
