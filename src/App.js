@@ -15,6 +15,7 @@ import About from './pages/about';
 
 //device components
 import { Provider } from './contexts/device-context';
+import Wifi from './pages/device/wifi';
 import Weather from './pages/device/weather';
 import Tests from './pages/device/tests';
 
@@ -33,7 +34,11 @@ function App() {
             <Route path="/about">
               <About />
             </Route>
+            
 
+            <Route path="/device/wifi">
+              <Wifi />
+            </Route>
             <Route path="/device/weather">
               <Weather />
             </Route>
