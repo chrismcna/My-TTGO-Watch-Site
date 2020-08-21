@@ -19,6 +19,14 @@ export default props => {
     const [long, setLong] = React.useState("");
     const onLongChange = React.useCallback(e => setLong(e.target.value), [setLong]);
 
+    const onGetCurrentLocation = React.useCallback(() =>{
+        navigator.geolocation.getCurrentPosition(position =>{
+            setLat(position.coords.latitude.toFixed(7));
+            setLong(position.coords.longitude.toFixed(7));
+        });
+    },[setLat, setLong]);
+
+
     const form = React.createRef()
     const onSubmit = React.useCallback(() => {
 
@@ -70,6 +78,8 @@ export default props => {
                     validators={['required', 'matchRegexp:^[0-9a-f]{32}$']}
                     errorMessages={['this field is required', 'invalid Api Key']}
                 />
+
+                <Button type="button" variant="contained" color="primary" onClick={onGetCurrentLocation}>Use Current Location</Button>
                 <TextValidator
                     label="Lat"
                     onChange={onLatChange}
