@@ -53,34 +53,38 @@ export default props => {
         <>
             <h2>Weather</h2>
 
+            the weather app you need an openweather.com api-id. <a href="http://openweathermap.org/appid"  target="_blank" rel="noopener noreferrer">http://openweathermap.org/appid</a> is a good starting point.
+            <br/>
+
             <ValidatorForm
                 ref={form}
                 onSubmit={onSubmit}
                 onError={errors => console.log(errors)}
             >
                 <TextValidator
-                    label="Api Key"
+                    maxlength={32}
+                    label="Api Key(APPID)"
                     onChange={onApiKeyChange}
                     name="apiKey"
                     value={apiKey}
-                    validators={['required']}
-                    errorMessages={['this field is required']}
+                    validators={['required', 'matchRegexp:^[0-9a-f]{32}$']}
+                    errorMessages={['this field is required', 'invalid Api Key']}
                 />
                 <TextValidator
                     label="Lat"
                     onChange={onLatChange}
                     name="lat"
                     value={lat}
-                    validators={['required']}
-                    errorMessages={['this field is required']}
+                    validators={['required', 'matchRegexp:^(-)?[0-9]+(\\.[0-9]+)?$']}
+                    errorMessages={['this field is required', 'invalid Latitude']}
                 />
                 <TextValidator
                     label="Long"
                     onChange={onLongChange}
                     name="long"
                     value={long}
-                    validators={['required']}
-                    errorMessages={['this field is required']}
+                    validators={['required', 'matchRegexp:^(-)?[0-9]+(\\.[0-9]+)?$']}
+                    errorMessages={['this field is required', 'invalid Longitude']}
                 />
                 <Button type="submit" variant="contained" color="primary">Submit</Button>
             </ValidatorForm>
