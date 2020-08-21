@@ -1,10 +1,17 @@
 import React from 'react';
 
+import { makeStyles } from '@material-ui/core/styles';
+
 import Divider from '@material-ui/core/Divider';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
+import Collapse from '@material-ui/core/Collapse';
+
+import ExpandLessIcon from '@material-ui/icons/ExpandLess';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+
 
 import HomeIcon from '@material-ui/icons/Home';
 import InfoIcon from '@material-ui/icons/Info';
@@ -23,22 +30,36 @@ import { Link } from "react-router-dom";
 import { Context } from "../contexts/device-context";
 
 
-export default  props => {
+const useStyles = makeStyles((theme) => ({
+    nested: {
+      paddingLeft: theme.spacing(4),
+    },
+}));
+
+export default props => {
+    const classes = useStyles();
 
     const deviceContext = React.useContext(Context);
     const { bluetoothDevice, setBluetoothDevice } = deviceContext;
 
-    var onBluetoothConnectClick = React.useCallback(() =>{
-        navigator.bluetooth.requestDevice({filters: [{services: ['6e400001-b5a3-f393-e0a9-e50e24dcca9e']}]})
-        .then(device => {
-            device.addEventListener('gattserverdisconnected', () => setBluetoothDevice(null));
-            setBluetoothDevice(device);
-        })
-        .catch(error => {
-        });
+    const [gitHubSubMenuOpen, setGitHubSubMenuOpen] = React.useState(false);
+
+    var onGitHubSubMenuClick = React.useCallback(() => {
+        setGitHubSubMenuOpen(!gitHubSubMenuOpen);
+    }, [gitHubSubMenuOpen,setGitHubSubMenuOpen]);
+
+
+    var onBluetoothConnectClick = React.useCallback(() => {
+        navigator.bluetooth.requestDevice({ filters: [{ services: ['6e400001-b5a3-f393-e0a9-e50e24dcca9e'] }] })
+            .then(device => {
+                device.addEventListener('gattserverdisconnected', () => setBluetoothDevice(null));
+                setBluetoothDevice(device);
+            })
+            .catch(error => {
+            });
     }, [setBluetoothDevice]);
 
-    var onBluetoothDisconnectClick = React.useCallback(() =>{
+    var onBluetoothDisconnectClick = React.useCallback(() => {
         setBluetoothDevice(null);
     }, [setBluetoothDevice]);
 
@@ -55,33 +76,46 @@ export default  props => {
                     <ListItemIcon><InfoIcon /></ListItemIcon>
                     <ListItemText primary={"About"} />
                 </ListItem>
-                <ListItem button component="a" href="https://github.com/sharandac/My-TTGO-Watch">
-                    <ListItemIcon><GitHubIcon /></ListItemIcon>
-                    <ListItemText primary={"GitHub - Watch"} />
+
+                <ListItem button onClick={onGitHubSubMenuClick}>
+                    <ListItemIcon>
+                        <GitHubIcon />
+                    </ListItemIcon>
+                    <ListItemText primary="GitHub" />
+                    {gitHubSubMenuOpen ? <ExpandLessIcon /> : <ExpandMoreIcon />}
                 </ListItem>
-                <ListItem button component="a" href="https://github.com/chrismcna/My-TTGO-Watch-Site">
-                    <ListItemIcon><GitHubIcon /></ListItemIcon>
-                    <ListItemText primary={"GitHub - Site"} />
-                </ListItem>
+                <Collapse in={gitHubSubMenuOpen} timeout="auto" unmountOnExit>
+                    <List component="div" disablePadding>
+                        <ListItem button component="a" className={classes.nested} href="https://github.com/sharandac/My-TTGO-Watch" >
+                            <ListItemIcon><GitHubIcon /></ListItemIcon>
+                            <ListItemText primary={"Watch"} />
+                        </ListItem>
+                        <ListItem button component="a" className={classes.nested} href="https://github.com/chrismcna/My-TTGO-Watch-Site">
+                            <ListItemIcon><GitHubIcon /></ListItemIcon>
+                            <ListItemText primary={"Site"} />
+                        </ListItem>
+                    </List>
+                </Collapse>
+
             </List>
             <Divider />
-    
+
             <List>
                 {
                     bluetoothDevice == null ?
-                    (
-                        <ListItem button onClick={onBluetoothConnectClick}>
-                            <ListItemIcon><BluetoothIcon /></ListItemIcon>
-                            <ListItemText primary={"Connect"} />
-                        </ListItem>
-                    )
-                    :
-                    (
-                        <ListItem button onClick={onBluetoothDisconnectClick}>
-                            <ListItemIcon><BluetoothDisabledIcon /></ListItemIcon>
-                            <ListItemText primary={"Disconnect"} />
-                        </ListItem>
-                    )
+                        (
+                            <ListItem button onClick={onBluetoothConnectClick}>
+                                <ListItemIcon><BluetoothIcon /></ListItemIcon>
+                                <ListItemText primary={"Connect"} />
+                            </ListItem>
+                        )
+                        :
+                        (
+                            <ListItem button onClick={onBluetoothDisconnectClick}>
+                                <ListItemIcon><BluetoothDisabledIcon /></ListItemIcon>
+                                <ListItemText primary={"Disconnect"} />
+                            </ListItem>
+                        )
                 }
 
                 <ListItem button component={Link} to="/device/watch" disabled={bluetoothDevice == null}>
