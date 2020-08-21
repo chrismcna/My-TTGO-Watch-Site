@@ -14,6 +14,7 @@ import BluetoothDisabledIcon from '@material-ui/icons/BluetoothDisabled';
 import WatchIcon from '@material-ui/icons/Watch';
 import WifiIcon from '@material-ui/icons/Wifi';
 import WbSunnyIcon from '@material-ui/icons/WbSunny';
+import DirectionsWalkIcon from '@material-ui/icons/DirectionsWalk';
 import HourglassFullIcon from '@material-ui/icons/HourglassFull';
 
 
@@ -94,6 +95,10 @@ export default  props => {
                 <ListItem button component={Link} to="/device/weather" disabled={bluetoothDevice == null}>
                     <ListItemIcon><WbSunnyIcon /></ListItemIcon>
                     <ListItemText primary={"Weather"} />
+                </ListItem>
+                <ListItem button component={Link} to="/device/steps" disabled={bluetoothDevice == null}>
+                    <ListItemIcon><DirectionsWalkIcon /></ListItemIcon>
+                    <ListItemText primary={"Steps"} />
                 </ListItem>
                 <ListItem button component={Link} to="/device/tests" disabled={bluetoothDevice == null}>
                     <ListItemIcon><HourglassFullIcon /></ListItemIcon>

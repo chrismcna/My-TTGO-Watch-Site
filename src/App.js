@@ -15,8 +15,10 @@ import About from './pages/about';
 
 //device components
 import { Provider } from './contexts/device-context';
+import Steps from './pages/device/steps';
 import Wifi from './pages/device/wifi';
 import Weather from './pages/device/weather';
+import Watch from './pages/device/watch';
 import Tests from './pages/device/tests';
 
 import logo from './logo.svg';
@@ -35,14 +37,18 @@ function App() {
               <About />
             </Route>
             
-
+            <Route path="/device/watch">
+              <Watch />
+            </Route>
             <Route path="/device/wifi">
               <Wifi />
             </Route>
             <Route path="/device/weather">
               <Weather />
             </Route>
-
+            <Route path="/device/steps">
+              <Steps />
+            </Route>
             <Route path="/device/tests">
               <Tests />
             </Route>
