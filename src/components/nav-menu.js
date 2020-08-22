@@ -50,7 +50,7 @@ export default props => {
 
 
     var onBluetoothConnectClick = React.useCallback(() => {
-        navigator.bluetooth.requestDevice({ filters: [{ services: ['battery_service', '6e400001-b5a3-f393-e0a9-e50e24dcca9e'] }] })
+        navigator.bluetooth.requestDevice({ filters: [{ services: ['device_information', 'battery_service', '6e400001-b5a3-f393-e0a9-e50e24dcca9e'] }] })
             .then(device => {
                 device.addEventListener('gattserverdisconnected', () => setBluetoothDevice(null));
                 setBluetoothDevice(device);
