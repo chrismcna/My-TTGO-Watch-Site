@@ -13,7 +13,7 @@ export default  props => {
 
             Wifi  <br/>
 
-            Bluetooth  <br/>
+            Bluetooth - GadgetBridge (Notification from mobile), remote wifi and weather app configuration, BLE characteristics (manufacturer name, firmware revision, power level, power state and more to come)  <br/>
 
             Step Counter <br/>
 
