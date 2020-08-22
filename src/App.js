@@ -14,6 +14,7 @@ import Home from './pages/home';
 import Installation from './pages/installation';
 import UserGuide from './pages/user-guide';
 import Issues from './pages/issues';
+import Development from './pages/development';
 import About from './pages/about';
 
 //device components
@@ -48,6 +49,11 @@ function App() {
             <Route path="/issues">
               <Issues />
             </Route>
+
+            <Route path="/development">
+              <Development />
+            </Route>
+            
 
             <Route path="/about">
               <About />
