@@ -29,7 +29,7 @@ export default props => {
 
     }, [bluetoothDevice]);
 
-    const handleBleDeviceInformation = React.useCallback(() => {
+    const handleBleDeviceInformationService = React.useCallback(() => {
         bluetoothDevice.gatt.connect()
             .then(server => {
                 return server.getPrimaryService('device_information');
@@ -67,23 +67,43 @@ export default props => {
             });
     }, [bluetoothDevice]);
 
-    const handleBleBatteryLevel = React.useCallback(() => {
+    const handleBleBatteryService = React.useCallback(() => {
         bluetoothDevice.gatt.connect()
             .then(server => {
                 return server.getPrimaryService('battery_service');
             })
             .then(service => {
-                return service.getCharacteristic('battery_level');
+                return service.getCharacteristics();
             })
-            .then(characteristic => {
-                return characteristic.readValue();
+            .then(characteristics => {
+                let decoder = new TextDecoder('utf-8');
+                let queue = Promise.resolve();
+                let promises = characteristics.map(characteristic => {
+                    switch (characteristic.uuid) {
+
+                        case window.BluetoothUUID.getCharacteristic('battery_level'):
+                            queue = queue.then(_ => characteristic.readValue()).then(value => {
+                                const batteryLevel = value.getUint8(0);
+                                return 'Battery Level is ' + batteryLevel + '%';
+                            });
+                            return queue;
+                        case window.BluetoothUUID.getCharacteristic('battery_power_state'):
+                            queue = queue.then(_ => characteristic.readValue()).then(value => {
+                                const batteryPowerState = value.getUint8(0);
+                                return'Battery Power State: ' + batteryPowerState;
+                            });
+                            return queue;
+                        default:
+                            return Promise.resolve("Unhandled characteristic - " + characteristic.uuid);
+                    }
+                })
+
+                return Promise.all(promises);
             })
-            .then(value => {
-                const batteryLevel = value.getUint8(0);
-                alert('Battery Level is ' + batteryLevel + '%');
-            }).catch(error => {
-                alert('Argh! ' + error);
-            });
+            .then(results => {
+                alert(results.join('. '));
+            })
+
 
     }, [bluetoothDevice]);
 
@@ -99,10 +119,10 @@ export default props => {
             <Button type="submit" variant="contained" color="primary" onClick={handleWhatsAppTest}>Whatsapp</Button>
             <br/>
 
-            <Button type="submit" variant="contained" color="primary" onClick={handleBleDeviceInformation}>BLE Device information</Button>
+            <Button type="submit" variant="contained" color="primary" onClick={handleBleDeviceInformationService}>BLE Device Information Service</Button>
             <br/>
 
-            <Button type="submit" variant="contained" color="primary" onClick={handleBleBatteryLevel}>BLE Battery Level</Button>
+            <Button type="submit" variant="contained" color="primary" onClick={handleBleBatteryService}>BLE Battery Service</Button>
             <br/>
             
         </>
