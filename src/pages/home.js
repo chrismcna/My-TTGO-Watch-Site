@@ -6,7 +6,7 @@ export default  props => {
         <>
             <h2>Home</h2>
 
-            Welcome to My-TTGO-Watch a smartwatch based on ESP32 from LlyGo. Currently under development!!!
+            Welcome to My-TTGO-Watch a smartwatch firmware based on ESP32 from LlyGo. Currently under development!!!
 
 
             <h3>Features</h3>
@@ -24,6 +24,8 @@ export default  props => {
             Time <br/>
 
             Apps - Weather, StopWatch and more to come <br/>
+
+            WebServer <br/>
 
 
 

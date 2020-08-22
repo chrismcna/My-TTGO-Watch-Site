@@ -12,6 +12,7 @@ import NavMenu from './components/nav-menu'
 //Main pages
 import Home from './pages/home';
 import Installation from './pages/installation';
+import UserGuide from './pages/user-guide';
 import Issues from './pages/issues';
 import About from './pages/about';
 
@@ -38,6 +39,11 @@ function App() {
             <Route path="/installation">
               <Installation />
             </Route>
+
+            <Route path="/user-guide">
+              <UserGuide />
+            </Route>
+            
 
             <Route path="/issues">
               <Issues />
