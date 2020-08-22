@@ -14,6 +14,8 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 
 import HomeIcon from '@material-ui/icons/Home';
+import BugReportIcon from '@material-ui/icons/BugReport';
+import GetAppIcon from '@material-ui/icons/GetApp';
 import InfoIcon from '@material-ui/icons/Info';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import BluetoothIcon from '@material-ui/icons/Bluetooth';
@@ -71,6 +73,14 @@ export default props => {
                 <ListItem button component={Link} to="/">
                     <ListItemIcon><HomeIcon /></ListItemIcon>
                     <ListItemText primary={"Home"} />
+                </ListItem>
+                <ListItem button component={Link} to="/installation">
+                    <ListItemIcon><GetAppIcon /></ListItemIcon>
+                    <ListItemText primary={"Installation"} />
+                </ListItem>
+                <ListItem button component={Link} to="/issues">
+                    <ListItemIcon><BugReportIcon /></ListItemIcon>
+                    <ListItemText primary={"Issues"} />
                 </ListItem>
                 <ListItem button component={Link} to="/about">
                     <ListItemIcon><InfoIcon /></ListItemIcon>

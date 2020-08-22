@@ -11,6 +11,8 @@ import NavMenu from './components/nav-menu'
 
 //Main pages
 import Home from './pages/home';
+import Installation from './pages/installation';
+import Issues from './pages/issues';
 import About from './pages/about';
 
 //device components
@@ -32,6 +34,14 @@ function App() {
       <Router>
         <ResponsiveDrawer drawerContent={<NavMenu />}>
           <Switch>
+
+            <Route path="/installation">
+              <Installation />
+            </Route>
+
+            <Route path="/issues">
+              <Issues />
+            </Route>
 
             <Route path="/about">
               <About />
