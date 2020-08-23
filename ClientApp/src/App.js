@@ -19,7 +19,23 @@ import About from './pages/about';
 
 //User Guide Pages
 import UserGuide from './pages/user-guide/user-guide';
-import CryptoTicker from './pages/user-guide/apps/crypto-ticker';
+import UserGuide_Navigation from './pages/user-guide/navigation';
+
+
+import UserGuide_Setting_Battery from './pages/user-guide/settings/battery'
+import UserGuide_Setting_Display from './pages/user-guide/settings/display';
+import UserGuide_Setting_Movement from './pages/user-guide/settings/movement';
+import UserGuide_Setting_Wifi from './pages/user-guide/settings/wifi';
+import UserGuide_Setting_Bluetooth from './pages/user-guide/settings/bluetooth';
+import UserGuide_Setting_Time from './pages/user-guide/settings/time';
+import UserGuide_Setting_Update from './pages/user-guide/settings/update';
+
+import UserGuide_Apps_Weather from './pages/user-guide/apps/weather';
+import UserGuide_Apps_StopWatch from './pages/user-guide/apps/stop-watch';
+import UserGuide_Apps_CryptoTicker from './pages/user-guide/apps/crypto-ticker';
+
+import UserGuide_GadgetBridge from './pages/user-guide/gadget-bridge';
+//User Guide Pages - end
 
 //device components
 import { Provider } from './contexts/device-context';
@@ -45,14 +61,51 @@ function App() {
 							<Installation />
 						</Route>
 
-
-						<Route path="/user-guide/apps/crypto-ticker">
-							<CryptoTicker />
-						</Route>
-
-						<Route path="/user-guide">
+						<Route path="/user-guide" exact={true}>
 							<UserGuide />
 						</Route>
+						<Route path="/user-guide/navigation">
+							<UserGuide_Navigation />
+						</Route>
+
+						<Route path="/user-guide/settings/battery">
+							<UserGuide_Setting_Battery />
+						</Route>
+						<Route path="/user-guide/settings/display">
+							<UserGuide_Setting_Display />
+						</Route>
+						<Route path="/user-guide/settings/movement">
+							<UserGuide_Setting_Movement />
+						</Route>
+						<Route path="/user-guide/settings/wifi">
+							<UserGuide_Setting_Wifi />
+						</Route>
+						<Route path="/user-guide/settings/bluetooth">
+							<UserGuide_Setting_Bluetooth />
+						</Route>
+						<Route path="/user-guide/settings/time">
+							<UserGuide_Setting_Time />
+						</Route>
+						<Route path="/user-guide/settings/update">
+							<UserGuide_Setting_Update />
+						</Route>
+
+
+						<Route path="/user-guide/apps/weather">
+							<UserGuide_Apps_Weather />
+						</Route>
+						<Route path="/user-guide/apps/stop-watch">
+							<UserGuide_Apps_StopWatch />
+						</Route>
+						<Route path="/user-guide/apps/crypto-ticker">
+							<UserGuide_Apps_CryptoTicker />
+						</Route>
+
+						<Route path="/user-guide/gadget-bridge">
+							<UserGuide_GadgetBridge />
+						</Route>
+
+						
 
 
 						<Route path="/issues">

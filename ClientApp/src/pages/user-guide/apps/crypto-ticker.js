@@ -4,7 +4,7 @@ import React from 'react';
 export default  props => {
     return (
         <>
-            <h2>App Crypto Ticker</h2>
+            <h2>Crypto Ticker App</h2>
 
             <p>
                 Binance api are used to retrieve crypto data.
