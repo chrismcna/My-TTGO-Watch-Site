@@ -23,7 +23,7 @@ export default  props => {
 
             Time <br/>
 
-            Apps - Weather, StopWatch and more to come <br/>
+            Apps - Weather, StopWatch, Crypto Ticker and more to come <br/>
 
             WebServer <br/>
 

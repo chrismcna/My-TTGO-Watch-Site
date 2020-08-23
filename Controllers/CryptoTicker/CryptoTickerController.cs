@@ -35,5 +35,20 @@ namespace My_TTGO_Watch_Site.Controllers.CryptoTicker
                 Price = Double.Parse(tickerPrice.price).ToString()
             };
         }
+
+
+        [HttpGet("24hrStatistics/{symbol}")]
+        public async Task<_24hrStatisticsModel> Get24hrStatistics(string symbol)
+        {
+            var binanceService = ServiceProvider.GetService<BinanceService>();
+            var statistics = await binanceService.Get24hrStatistics(symbol);
+
+            return new _24hrStatisticsModel()
+            {
+                LastPrice = Double.Parse(statistics.lastPrice).ToString(),
+                PriceChangePercent = Double.Parse(statistics.priceChangePercent).ToString(),
+                Volume = Double.Parse(statistics.volume).ToString(),
+            };
+        }
     }
 }

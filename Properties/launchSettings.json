@@ -2,6 +2,10 @@
   "iisSettings": {
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
+    "iis": {
+      "applicationUrl": "http://localhost/My-TTGO-Watch-Site",
+      "sslPort": 0
+    },
     "iisExpress": {
       "applicationUrl": "http://localhost:57342",
       "sslPort": 44385

@@ -50,7 +50,15 @@ export default props => {
 
     var onGitHubSubMenuClick = React.useCallback(() => {
         setGitHubSubMenuOpen(!gitHubSubMenuOpen);
-    }, [gitHubSubMenuOpen,setGitHubSubMenuOpen]);
+    }, [gitHubSubMenuOpen, setGitHubSubMenuOpen]);
+
+
+
+    const [userGuidSubMenuOpen, setUserGuidSubMenuOpen] = React.useState(false);
+
+    var onUserGuidSubMenuClick = React.useCallback(() => {
+        setUserGuidSubMenuOpen(!userGuidSubMenuOpen);
+    }, [userGuidSubMenuOpen, setUserGuidSubMenuOpen]);
 
 
     var onBluetoothConnectClick = React.useCallback(() => {
@@ -80,10 +88,30 @@ export default props => {
                     <ListItemIcon><GetAppIcon /></ListItemIcon>
                     <ListItemText primary={"Installation"} />
                 </ListItem>
-                <ListItem button component={Link} to="/user-guide">
-                    <ListItemIcon><HelpIcon /></ListItemIcon>
-                    <ListItemText primary={"User Guide"} />
+                
+
+
+                <ListItem button onClick={onUserGuidSubMenuClick}>
+                    <ListItemIcon>
+                        <HelpIcon />
+                    </ListItemIcon>
+                    <ListItemText primary="User Guide" />
+                    {userGuidSubMenuOpen ? <ExpandLessIcon /> : <ExpandMoreIcon />}
                 </ListItem>
+                <Collapse in={userGuidSubMenuOpen} timeout="auto" unmountOnExit>
+                    <List component="div" disablePadding>
+                        <ListItem button component={Link} to="/user-guide" className={classes.nested}>
+                            <ListItemIcon><InfoIcon /></ListItemIcon>
+                            <ListItemText primary={"Home"} />
+                        </ListItem>
+                        <ListItem button component={Link} to="/user-guide/apps/crypto-ticker" className={classes.nested}>
+                            <ListItemIcon><InfoIcon /></ListItemIcon>
+                            <ListItemText primary={"App - Crypto Ticker"} />
+                        </ListItem>
+                    </List>
+                </Collapse>
+
+
                 <ListItem button component={Link} to="/issues">
                     <ListItemIcon><BugReportIcon /></ListItemIcon>
                     <ListItemText primary={"Issues"} />
@@ -106,11 +134,11 @@ export default props => {
                 </ListItem>
                 <Collapse in={gitHubSubMenuOpen} timeout="auto" unmountOnExit>
                     <List component="div" disablePadding>
-                        <ListItem button component="a" className={classes.nested} href="https://github.com/sharandac/My-TTGO-Watch" >
+                        <ListItem button component="a" href="https://github.com/sharandac/My-TTGO-Watch" className={classes.nested} >
                             <ListItemIcon><GitHubIcon /></ListItemIcon>
                             <ListItemText primary={"Watch"} />
                         </ListItem>
-                        <ListItem button component="a" className={classes.nested} href="https://github.com/chrismcna/My-TTGO-Watch-Site">
+                        <ListItem button component="a" href="https://github.com/chrismcna/My-TTGO-Watch-Site" className={classes.nested}>
                             <ListItemIcon><GitHubIcon /></ListItemIcon>
                             <ListItemText primary={"Site"} />
                         </ListItem>

@@ -1,8 +1,8 @@
 import React from 'react';
 import {
-  BrowserRouter as Router,
-  Switch,
-  Route
+	BrowserRouter as Router,
+	Switch,
+	Route
 } from "react-router-dom";
 
 
@@ -12,10 +12,14 @@ import NavMenu from './components/nav-menu'
 //Main pages
 import Home from './pages/home';
 import Installation from './pages/installation';
-import UserGuide from './pages/user-guide';
 import Issues from './pages/issues';
 import Development from './pages/development';
 import About from './pages/about';
+
+
+//User Guide Pages
+import UserGuide from './pages/user-guide/user-guide';
+import CryptoTicker from './pages/user-guide/apps/crypto-ticker';
 
 //device components
 import { Provider } from './contexts/device-context';
@@ -31,60 +35,66 @@ import './App.css';
 
 
 function App() {
-  return (
-    <Provider>
-      <Router>
-        <ResponsiveDrawer drawerContent={<NavMenu />}>
-          <Switch>
+	return (
+		<Provider>
+			<Router>
+				<ResponsiveDrawer drawerContent={<NavMenu />}>
+					<Switch>
 
-            <Route path="/installation">
-              <Installation />
-            </Route>
+						<Route path="/installation">
+							<Installation />
+						</Route>
 
-            <Route path="/user-guide">
-              <UserGuide />
-            </Route>
-            
 
-            <Route path="/issues">
-              <Issues />
-            </Route>
+						<Route path="/user-guide/apps/crypto-ticker">
+							<CryptoTicker />
+						</Route>
 
-            <Route path="/development">
-              <Development />
-            </Route>
-            
+						<Route path="/user-guide">
+							<UserGuide />
+						</Route>
 
-            <Route path="/about">
-              <About />
-            </Route>
-            
-            <Route path="/device/watch">
-              <Watch />
-            </Route>
-            <Route path="/device/wifi">
-              <Wifi />
-            </Route>
-            <Route path="/device/weather">
-              <Weather />
-            </Route>
-            <Route path="/device/steps">
-              <Steps />
-            </Route>
-            <Route path="/device/tests">
-              <Tests />
-            </Route>
-            
 
-            <Route path="/">
-              <Home />
-            </Route>
-          </Switch>
+						<Route path="/issues">
+							<Issues />
+						</Route>
 
-        </ResponsiveDrawer>
-      </Router>
-    </Provider>
-  );
+						<Route path="/development">
+							<Development />
+						</Route>
+
+
+						<Route path="/about">
+							<About />
+						</Route>
+						
+
+						<Route path="/device/watch">
+							<Watch />
+						</Route>
+						<Route path="/device/wifi">
+							<Wifi />
+						</Route>
+						<Route path="/device/weather">
+							<Weather />
+						</Route>
+						<Route path="/device/steps">
+							<Steps />
+						</Route>
+						<Route path="/device/tests">
+							<Tests />
+						</Route>
+
+
+						<Route path="/">
+							<Home />
+						</Route>
+					</Switch>
+
+				</ResponsiveDrawer>
+			</Router>
+		</Provider>
+	);
 }
 
 export default App;

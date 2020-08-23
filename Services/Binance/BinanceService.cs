@@ -7,6 +7,8 @@ using Models = My_TTGO_Watch_Site.Services.Binance.Models;
 
 namespace My_TTGO_Watch_Site.Services.Binance
 {
+
+    //https://github.com/binance-exchange/binance-official-api-docs/blob/master/rest-api.md#current-average-price
     public class BinanceService
     {
 
@@ -31,6 +33,19 @@ namespace My_TTGO_Watch_Site.Services.Binance
 
 
             return JsonSerializer.Deserialize<Models.Ticker.PriceModel>(response);
+        }
+
+
+        public async Task<Models.Ticker._24hrStatisticsModel> Get24hrStatistics(String symbol)
+        {
+            var httpClientFactory = ServiceProvider.GetService<IHttpClientFactory>();
+
+            var binanceHttpClient = httpClientFactory.CreateClient("binance");
+
+            var response = await binanceHttpClient.GetStringAsync($"https://api.binance.com/api/v3/ticker/24hr?symbol={symbol}");
+
+
+            return JsonSerializer.Deserialize<Models.Ticker._24hrStatisticsModel>(response);
         }
     }
 }
