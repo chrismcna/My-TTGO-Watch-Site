@@ -6,7 +6,11 @@ export default  props => {
         <>
             <h2>Bluetooth Setting</h2>
 
+            <img src="/user-guide/settings/bluetooth/bluetooth.png" />
             
+            <p>
+
+            </p>
            
         </>
     );

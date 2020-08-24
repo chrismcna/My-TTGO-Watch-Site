@@ -5,7 +5,7 @@ export default  props => {
         <>
             <h2>Time Settings</h2>
 
-            
+            //TODO: couldnt take screen shot
            
         </>
     );

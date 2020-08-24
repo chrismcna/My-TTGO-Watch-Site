@@ -80,14 +80,15 @@ export default props => {
 
 				<SubMenu icon={<HelpIcon />} label={"User Guide"}>
 					<List component="div" disablePadding>
-						<ListItem button component={Link} to="/user-guide" className={classes.nested}>
-							<ListItemIcon><InfoIcon /></ListItemIcon>
-							<ListItemText primary={"Home"} />
-						</ListItem>
 
 						<ListItem button component={Link} to="/user-guide/navigation" className={classes.nested}>
 							<ListItemIcon><InfoIcon /></ListItemIcon>
 							<ListItemText primary={"Navigation"} />
+						</ListItem>
+
+						<ListItem button component={Link} to="/user-guide/status-bar" className={classes.nested}>
+							<ListItemIcon><InfoIcon /></ListItemIcon>
+							<ListItemText primary={"Status Bar"} />
 						</ListItem>
 
 						

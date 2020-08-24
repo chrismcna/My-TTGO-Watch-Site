@@ -18,9 +18,8 @@ import About from './pages/about';
 
 
 //User Guide Pages
-import UserGuide from './pages/user-guide/user-guide';
 import UserGuide_Navigation from './pages/user-guide/navigation';
-
+import UserGuide_StatusBar from './pages/user-guide/status-bar';
 
 import UserGuide_Setting_Battery from './pages/user-guide/settings/battery'
 import UserGuide_Setting_Display from './pages/user-guide/settings/display';
@@ -61,12 +60,14 @@ function App() {
 							<Installation />
 						</Route>
 
-						<Route path="/user-guide" exact={true}>
-							<UserGuide />
-						</Route>
 						<Route path="/user-guide/navigation">
 							<UserGuide_Navigation />
 						</Route>
+
+						<Route path="/user-guide/status-bar">
+							<UserGuide_StatusBar />
+						</Route>
+						
 
 						<Route path="/user-guide/settings/battery">
 							<UserGuide_Setting_Battery />

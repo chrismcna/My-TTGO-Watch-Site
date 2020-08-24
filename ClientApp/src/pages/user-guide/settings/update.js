@@ -5,7 +5,7 @@ export default  props => {
         <>
             <h2>Update</h2>
 
-            
+            <img src="/user-guide/settings/update/update.png" />
            
         </>
     );
