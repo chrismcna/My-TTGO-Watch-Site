@@ -24,7 +24,7 @@ namespace My_TTGO_Watch_Site.Controllers.AlexaSmartHome
         }
 
 
-        [HttpGet("ContactSensoEvent/{endPointId}/{contactSensorEvent}")]
+        [HttpGet("ContactSensorEvent/{endPointId}/{contactSensorEvent}")]
         public async Task ContactSensorEvent(string endPointId, string contactSensorEvent)
         {
             var httpClientFactory = ServiceProvider.GetService<IHttpClientFactory>();
