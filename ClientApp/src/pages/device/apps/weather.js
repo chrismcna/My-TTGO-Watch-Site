@@ -62,9 +62,11 @@ export default props => {
     return (
         <>
             <h2>Weather</h2>
-
+            
             the weather app you need an openweather.com api-id. <a href="http://openweathermap.org/appid"  target="_blank" rel="noopener noreferrer">http://openweathermap.org/appid</a> is a good starting point.
             <br/>
+
+            <h2>Device Configuration</h2>
 
             <ConenctDevice>
                 <ValidatorForm

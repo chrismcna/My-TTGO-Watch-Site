@@ -1,9 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
 
+import { withRouter } from 'react-router-dom'
+
 export const Context = React.createContext({});
 
-export const Provider = props => {
+export const Provider = withRouter(props => {
   // Initial values are obtained from the props
   const {
     bluetoothDevice: initialBluetoothDevice,
@@ -22,6 +24,9 @@ export const Provider = props => {
         setBluetoothDevice(device);
       })
       .catch(error => {
+        if (window.confirm("Do you need some help?")) {
+          props.history.push('/device/connect')
+        }
       });
 
   }, [setBluetoothDevice]);
@@ -40,7 +45,7 @@ export const Provider = props => {
 
   // pass the value in provider and return
   return <Context.Provider value={context}>{children}</Context.Provider>;
-};
+});
 
 export const { Consumer } = Context;
 

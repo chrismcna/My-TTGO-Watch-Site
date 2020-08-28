@@ -40,6 +40,8 @@ import UserGuide_GadgetBridge from './pages/user-guide/gadget-bridge';
 
 //device components
 import { Provider } from './contexts/device-context';
+
+import Connect from './pages/device/connect';
 import Steps from './pages/device/steps';
 import Wifi from './pages/device/wifi';
 import Weather from './pages/device/apps/weather';
@@ -53,8 +55,9 @@ import './App.css';
 
 function App() {
 	return (
-		<Provider>
-			<Router>
+		<Router>
+			<Provider>
+
 				<ResponsiveDrawer drawerContent={<NavMenu />}>
 					<Switch>
 
@@ -69,7 +72,7 @@ function App() {
 						<Route path="/user-guide/status-bar">
 							<UserGuide_StatusBar />
 						</Route>
-						
+
 
 						<Route path="/user-guide/settings/battery">
 							<UserGuide_Setting_Battery />
@@ -112,9 +115,9 @@ function App() {
 							<UserGuide_GadgetBridge />
 						</Route>
 
-						
-						
-						
+
+
+
 
 
 						<Route path="/issues">
@@ -129,8 +132,12 @@ function App() {
 						<Route path="/about">
 							<About />
 						</Route>
-						
 
+
+
+						<Route path="/device/connect">
+							<Connect />
+						</Route>
 						<Route path="/device/watch">
 							<Watch />
 						</Route>
@@ -154,8 +161,8 @@ function App() {
 					</Switch>
 
 				</ResponsiveDrawer>
-			</Router>
-		</Provider>
+			</Provider>
+		</Router>
 	);
 }
 

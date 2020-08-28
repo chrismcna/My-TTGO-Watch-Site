@@ -50,7 +50,11 @@ export default props => {
     return (
         <>
             <h2>Wifi</h2>
+            <p>
+                Wifi can be remotely configured used bluetooth serial
+            </p>
 
+            <h2>Device Configuration</h2>
 
             <ConenctDevice>
                 <ValidatorForm
