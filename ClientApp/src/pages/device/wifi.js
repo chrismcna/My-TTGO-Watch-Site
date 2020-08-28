@@ -2,6 +2,8 @@ import React from 'react';
 import Button from '@material-ui/core/Button';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 
+import ConenctDevice from "../../components/connect-device";
+
 import { Context } from "../../contexts/device-context";
 
 export default props => {
@@ -19,29 +21,29 @@ export default props => {
     const onSubmit = React.useCallback(() => {
 
         bluetoothDevice.gatt.connect()
-        .then(server => {
-            return server.getPrimaryService('6e400001-b5a3-f393-e0a9-e50e24dcca9e');
-        })
-        .then(service => {
-            return service.getCharacteristic('6e400002-b5a3-f393-e0a9-e50e24dcca9e');
-        })
-        .then(characteristic  => {
+            .then(server => {
+                return server.getPrimaryService('6e400001-b5a3-f393-e0a9-e50e24dcca9e');
+            })
+            .then(service => {
+                return service.getCharacteristic('6e400002-b5a3-f393-e0a9-e50e24dcca9e');
+            })
+            .then(characteristic => {
 
 
-            const enc = new TextEncoder();
-            return characteristic.writeValue(enc.encode(JSON.stringify({
-                t: "conf",
-                app:"settings",
-                settings: "wlan",
-                ssid: ssid,
-                key:key
-            }) +'\n'))
-            .then(() => characteristic.writeValue(Uint8Array.of(0x03)));
+                const enc = new TextEncoder();
+                return characteristic.writeValue(enc.encode(JSON.stringify({
+                    t: "conf",
+                    app: "settings",
+                    settings: "wlan",
+                    ssid: ssid,
+                    key: key
+                }) + '\n'))
+                    .then(() => characteristic.writeValue(Uint8Array.of(0x03)));
 
 
-        }).catch(error => {
-            alert('Argh! ' + error);
-        });
+            }).catch(error => {
+                alert('Argh! ' + error);
+            });
 
     }, [ssid, key, bluetoothDevice]);
 
@@ -49,35 +51,35 @@ export default props => {
         <>
             <h2>Wifi</h2>
 
-            
 
-            <ValidatorForm
-                ref={form}
-                onSubmit={onSubmit}
-                onError={errors => console.log(errors)}
-            >
-                <TextValidator
-                    label="SSID"
-                    onChange={onSsidChange}
-                    name="ssid"
-                    value={ssid}
-                    validators={['required']}
-                    errorMessages={['this field is required']}
-                />
-                <TextValidator
-                    label="Key"
-                    onChange={onkeyChange}
-                    name="key"
-                    value={key}
-                    validators={['required']}
-                    errorMessages={['this field is required']}
-                />
-                
-                <Button type="submit" variant="contained" color="primary">Submit</Button>
-            </ValidatorForm>
+            <ConenctDevice>
+                <ValidatorForm
+                    ref={form}
+                    onSubmit={onSubmit}
+                    onError={errors => console.log(errors)}
+                >
+                    <TextValidator
+                        label="SSID"
+                        onChange={onSsidChange}
+                        name="ssid"
+                        value={ssid}
+                        validators={['required']}
+                        errorMessages={['this field is required']}
+                    />
+                    <TextValidator
+                        label="Key"
+                        onChange={onkeyChange}
+                        name="key"
+                        value={key}
+                        validators={['required']}
+                        errorMessages={['this field is required']}
+                    />
 
-            
-           
+                    <Button type="submit" variant="contained" color="primary">Submit</Button>
+                </ValidatorForm>
+            </ConenctDevice>
+
+
         </>
     );
 }

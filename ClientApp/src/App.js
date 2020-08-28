@@ -32,6 +32,8 @@ import UserGuide_Setting_Update from './pages/user-guide/settings/update';
 import UserGuide_Apps_Weather from './pages/user-guide/apps/weather';
 import UserGuide_Apps_StopWatch from './pages/user-guide/apps/stop-watch';
 import UserGuide_Apps_CryptoTicker from './pages/user-guide/apps/crypto-ticker';
+import UserGuide_Apps_AlexaSmartHomeController from './pages/user-guide/apps/alexa-smart-home-controller';
+
 
 import UserGuide_GadgetBridge from './pages/user-guide/gadget-bridge';
 //User Guide Pages - end
@@ -40,7 +42,7 @@ import UserGuide_GadgetBridge from './pages/user-guide/gadget-bridge';
 import { Provider } from './contexts/device-context';
 import Steps from './pages/device/steps';
 import Wifi from './pages/device/wifi';
-import Weather from './pages/device/weather';
+import Weather from './pages/device/apps/weather';
 import Watch from './pages/device/watch';
 import Tests from './pages/device/tests';
 
@@ -102,10 +104,16 @@ function App() {
 							<UserGuide_Apps_CryptoTicker />
 						</Route>
 
+						<Route path="/user-guide/apps/alexa-smart-home-controller">
+							<UserGuide_Apps_AlexaSmartHomeController />
+						</Route>
+
 						<Route path="/user-guide/gadget-bridge">
 							<UserGuide_GadgetBridge />
 						</Route>
 
+						
+						
 						
 
 
@@ -129,7 +137,7 @@ function App() {
 						<Route path="/device/wifi">
 							<Wifi />
 						</Route>
-						<Route path="/device/weather">
+						<Route path="/device/apps/weather">
 							<Weather />
 						</Route>
 						<Route path="/device/steps">

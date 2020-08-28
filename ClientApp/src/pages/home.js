@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { Link } from "react-router-dom";
 
 export default  props => {
     return (
@@ -28,7 +29,7 @@ export default  props => {
 
             Time <br/>
 
-            Apps - Weather, StopWatch, Crypto Ticker and more to come <br/>
+            Apps - <Link to="/user-guide/apps/weather">Weather</Link>, <Link to="/user-guide/apps/stop-watch">StopWatch</Link>, <Link to="/user-guide/apps/crypto-ticker">Crypto Ticker</Link>, <Link to="/user-guide/apps/alexa-smart-home-controller">Alexa Smart Home Controller</Link> (in developement) and more to come <br/>
 
             WebServer <br/>
 

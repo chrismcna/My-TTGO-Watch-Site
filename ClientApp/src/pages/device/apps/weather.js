@@ -2,7 +2,9 @@ import React from 'react';
 import Button from '@material-ui/core/Button';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 
-import { Context } from "../../contexts/device-context";
+import ConenctDevice from "../../../components/connect-device";
+
+import { Context } from "../../../contexts/device-context";
 
 export default props => {
 
@@ -64,41 +66,42 @@ export default props => {
             the weather app you need an openweather.com api-id. <a href="http://openweathermap.org/appid"  target="_blank" rel="noopener noreferrer">http://openweathermap.org/appid</a> is a good starting point.
             <br/>
 
-            <ValidatorForm
-                ref={form}
-                onSubmit={onSubmit}
-                onError={errors => console.log(errors)}
-            >
-                <TextValidator
-                    maxlength={32}
-                    label="Api Key(APPID)"
-                    onChange={onApiKeyChange}
-                    name="apiKey"
-                    value={apiKey}
-                    validators={['required', 'matchRegexp:^[0-9a-f]{32}$']}
-                    errorMessages={['this field is required', 'invalid Api Key']}
-                />
+            <ConenctDevice>
+                <ValidatorForm
+                    ref={form}
+                    onSubmit={onSubmit}
+                    onError={errors => console.log(errors)}
+                >
+                    <TextValidator
+                        maxlength={32}
+                        label="Api Key(APPID)"
+                        onChange={onApiKeyChange}
+                        name="apiKey"
+                        value={apiKey}
+                        validators={['required', 'matchRegexp:^[0-9a-f]{32}$']}
+                        errorMessages={['this field is required', 'invalid Api Key']}
+                    />
 
-                <Button type="button" variant="contained" color="primary" onClick={onGetCurrentLocation}>Use Current Location</Button>
-                <TextValidator
-                    label="Lat"
-                    onChange={onLatChange}
-                    name="lat"
-                    value={lat}
-                    validators={['required', 'matchRegexp:^(-)?[0-9]+(\\.[0-9]+)?$']}
-                    errorMessages={['this field is required', 'invalid Latitude']}
-                />
-                <TextValidator
-                    label="Long"
-                    onChange={onLongChange}
-                    name="long"
-                    value={long}
-                    validators={['required', 'matchRegexp:^(-)?[0-9]+(\\.[0-9]+)?$']}
-                    errorMessages={['this field is required', 'invalid Longitude']}
-                />
-                <Button type="submit" variant="contained" color="primary">Submit</Button>
-            </ValidatorForm>
-
+                    <Button type="button" variant="contained" color="primary" onClick={onGetCurrentLocation}>Use Current Location</Button>
+                    <TextValidator
+                        label="Lat"
+                        onChange={onLatChange}
+                        name="lat"
+                        value={lat}
+                        validators={['required', 'matchRegexp:^(-)?[0-9]+(\\.[0-9]+)?$']}
+                        errorMessages={['this field is required', 'invalid Latitude']}
+                    />
+                    <TextValidator
+                        label="Long"
+                        onChange={onLongChange}
+                        name="long"
+                        value={long}
+                        validators={['required', 'matchRegexp:^(-)?[0-9]+(\\.[0-9]+)?$']}
+                        errorMessages={['this field is required', 'invalid Longitude']}
+                    />
+                    <Button type="submit" variant="contained" color="primary">Submit</Button>
+                </ValidatorForm>
+            </ConenctDevice>
             
            
         </>

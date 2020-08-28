@@ -44,23 +44,7 @@ export default props => {
 	const classes = useStyles();
 
 	const deviceContext = React.useContext(Context);
-	const { bluetoothDevice, setBluetoothDevice } = deviceContext;
-
-
-
-	var onBluetoothConnectClick = React.useCallback(() => {
-		navigator.bluetooth.requestDevice({ filters: [{ services: ['device_information', 'battery_service', '6e400001-b5a3-f393-e0a9-e50e24dcca9e'] }] })
-			.then(device => {
-				device.addEventListener('gattserverdisconnected', () => setBluetoothDevice(null));
-				setBluetoothDevice(device);
-			})
-			.catch(error => {
-			});
-	}, [setBluetoothDevice]);
-
-	var onBluetoothDisconnectClick = React.useCallback(() => {
-		setBluetoothDevice(null);
-	}, [setBluetoothDevice]);
+	const { bluetoothDevice, connect, disconnect } = deviceContext;
 
 
 	return (
@@ -140,6 +124,10 @@ export default props => {
 									<ListItemIcon><InfoIcon /></ListItemIcon>
 									<ListItemText primary={"Crypto Ticker"} />
 								</ListItem>
+								<ListItem button component={Link} to="/user-guide/apps/alexa-smart-home-controller" className={classes.nested}>
+									<ListItemIcon><InfoIcon /></ListItemIcon>
+									<ListItemText primary={"Alexa Smart Home Controller"} />
+								</ListItem>
 							</List>
 						</SubMenu>
 
@@ -188,14 +176,14 @@ export default props => {
 				{
 					bluetoothDevice == null ?
 						(
-							<ListItem button onClick={onBluetoothConnectClick}>
+							<ListItem button onClick={connect}>
 								<ListItemIcon><BluetoothIcon /></ListItemIcon>
 								<ListItemText primary={"Connect"} />
 							</ListItem>
 						)
 						:
 						(
-							<ListItem button onClick={onBluetoothDisconnectClick}>
+							<ListItem button onClick={disconnect}>
 								<ListItemIcon><BluetoothDisabledIcon /></ListItemIcon>
 								<ListItemText primary={"Disconnect"} />
 							</ListItem>
@@ -210,7 +198,7 @@ export default props => {
 					<ListItemIcon><WifiIcon /></ListItemIcon>
 					<ListItemText primary={"Wifi"} />
 				</ListItem>
-				<ListItem button component={Link} to="/device/weather" disabled={bluetoothDevice == null}>
+				<ListItem button component={Link} to="/device/apps/weather" disabled={bluetoothDevice == null}>
 					<ListItemIcon><WbSunnyIcon /></ListItemIcon>
 					<ListItemText primary={"Weather"} />
 				</ListItem>

@@ -1,6 +1,8 @@
 import React from 'react';
 import Button from '@material-ui/core/Button';
 
+import ConenctDevice from "../../components/connect-device";
+
 import { Context } from "../../contexts/device-context";
 
 export default props => {
@@ -50,7 +52,7 @@ export default props => {
                             return queue;
                         case window.BluetoothUUID.getCharacteristic('firmware_revision_string'):
                             queue = queue.then(_ => characteristic.readValue()).then(value => {
-                                return'Software Revision String: ' + decoder.decode(value);
+                                return 'Software Revision String: ' + decoder.decode(value);
                             });
                             return queue;
                         default:
@@ -90,7 +92,7 @@ export default props => {
                         case window.BluetoothUUID.getCharacteristic('battery_power_state'):
                             queue = queue.then(_ => characteristic.readValue()).then(value => {
                                 const batteryPowerState = value.getUint8(0);
-                                return'Battery Power State: ' + batteryPowerState;
+                                return 'Battery Power State: ' + batteryPowerState;
                             });
                             return queue;
                         default:
@@ -108,23 +110,24 @@ export default props => {
     }, [bluetoothDevice]);
 
 
-    
 
-    
+
+
 
     return (
         <>
             <h2>Tests</h2>
 
-            <Button type="submit" variant="contained" color="primary" onClick={handleWhatsAppTest}>Whatsapp</Button>
-            <br/>
+            <ConenctDevice>
+                <Button type="submit" variant="contained" color="primary" onClick={handleWhatsAppTest}>Whatsapp</Button>
+                <br />
 
-            <Button type="submit" variant="contained" color="primary" onClick={handleBleDeviceInformationService}>BLE Device Information Service</Button>
-            <br/>
+                <Button type="submit" variant="contained" color="primary" onClick={handleBleDeviceInformationService}>BLE Device Information Service</Button>
+                <br />
 
-            <Button type="submit" variant="contained" color="primary" onClick={handleBleBatteryService}>BLE Battery Service</Button>
-            <br/>
-            
+                <Button type="submit" variant="contained" color="primary" onClick={handleBleBatteryService}>BLE Battery Service</Button>
+                <br />
+            </ConenctDevice>
         </>
     );
 }

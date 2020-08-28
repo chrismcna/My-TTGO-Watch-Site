@@ -1,7 +1,7 @@
-import React, { createContext, useState } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 
-export const Context = createContext({});
+export const Context = React.createContext({});
 
 export const Provider = props => {
   // Initial values are obtained from the props
@@ -11,13 +11,31 @@ export const Provider = props => {
   } = props;
 
 
-  const [bluetoothDevice, setBluetoothDevice] = useState(initialBluetoothDevice);
+  const [bluetoothDevice, setBluetoothDevice] = React.useState(initialBluetoothDevice);
+
+
+  const connect = React.useCallback(() => {
+
+    navigator.bluetooth.requestDevice({ filters: [{ services: ['device_information', 'battery_service', '6e400001-b5a3-f393-e0a9-e50e24dcca9e'] }] })
+      .then(device => {
+        device.addEventListener('gattserverdisconnected', () => setBluetoothDevice(null));
+        setBluetoothDevice(device);
+      })
+      .catch(error => {
+      });
+
+  }, [setBluetoothDevice]);
+
+  const disconnect = React.useCallback(() => {
+    setBluetoothDevice(null);
+  }, [setBluetoothDevice]);
 
 
   // Make the context object:
   const context = {
     bluetoothDevice,
-    setBluetoothDevice
+    connect,
+    disconnect
   };
 
   // pass the value in provider and return
@@ -27,9 +45,9 @@ export const Provider = props => {
 export const { Consumer } = Context;
 
 Provider.propTypes = {
-    bluetoothDevice: PropTypes.object
+  bluetoothDevice: PropTypes.object
 };
 
 Provider.defaultProps = {
-    bluetoothDevice: null
+  bluetoothDevice: null
 };
