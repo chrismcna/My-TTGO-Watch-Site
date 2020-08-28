@@ -4,7 +4,7 @@ import { Backdrop, makeStyles, Button } from '@material-ui/core';
 
 import BluetoothIcon from '@material-ui/icons/Bluetooth';
 
-import { Context } from "../contexts/device-context";
+import { DeviceContext } from "../contexts/device-context";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default  props => {
     const classes = useStyles();
-    const deviceContext = React.useContext(Context);
+    const deviceContext = React.useContext(DeviceContext);
     const { bluetoothDevice, connect } = deviceContext;
 
     return (

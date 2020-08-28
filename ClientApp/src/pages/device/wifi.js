@@ -2,13 +2,13 @@ import React from 'react';
 import Button from '@material-ui/core/Button';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 
-import ConenctDevice from "../../components/connect-device";
+import ConnctDevice from "../../components/connect-device";
 
-import { Context } from "../../contexts/device-context";
+import { DeviceContext } from "../../contexts/device-context";
 
 export default props => {
 
-    const deviceContext = React.useContext(Context);
+    const deviceContext = React.useContext(DeviceContext);
     const { bluetoothDevice } = deviceContext;
 
     const [ssid, setSsid] = React.useState("");
@@ -56,7 +56,7 @@ export default props => {
 
             <h2>Device Configuration</h2>
 
-            <ConenctDevice>
+            <ConnctDevice>
                 <ValidatorForm
                     ref={form}
                     onSubmit={onSubmit}
@@ -81,7 +81,7 @@ export default props => {
 
                     <Button type="submit" variant="contained" color="primary">Submit</Button>
                 </ValidatorForm>
-            </ConenctDevice>
+            </ConnctDevice>
 
 
         </>
