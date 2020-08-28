@@ -75,7 +75,7 @@ function ResponsiveDrawer(props) {
                         <MenuIcon />
                     </IconButton>
                     <Typography variant="h6" noWrap>
-                        My TTGO Watch
+                        My TTGO Watch - Under developement
           </Typography>
                 </Toolbar>
             </AppBar>

@@ -13,7 +13,7 @@ export default props => {
             </p>
 
             <p>
-                Supports:
+                Notifcation Support:
                 <ul>
                     <li>Whatsapp</li>
                     <li>K-9 Mail</li>
@@ -47,6 +47,9 @@ export default props => {
 
             <p>
                 Not seeing the watch? have you made the watch discoverable? <Link to="/user-guide/setting/bluetooth">bluetooth user guide</Link>
+            </p>
+            <p>
+                Still not seeing the watch? have you already paired? then unpair via android bluetooth settings and attempt pairing again via Gadgetbridge app
             </p>
         </>
     );
