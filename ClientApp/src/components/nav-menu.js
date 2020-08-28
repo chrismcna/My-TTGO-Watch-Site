@@ -16,6 +16,13 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import HomeIcon from '@material-ui/icons/Home';
 import GetAppIcon from '@material-ui/icons/GetApp';
 import HelpIcon from '@material-ui/icons/Help';
+import NavigationIcon from '@material-ui/icons/Navigation';
+import SettingsIcon from '@material-ui/icons/Settings';
+import Brightness6Icon from '@material-ui/icons/Brightness6';
+import AccessTimeIcon from '@material-ui/icons/AccessTime';
+import SystemUpdateIcon from '@material-ui/icons/SystemUpdate';
+import AppsIcon from '@material-ui/icons/Apps';
+import TimerIcon from '@material-ui/icons/Timer';
 import BugReportIcon from '@material-ui/icons/BugReport';
 import CodeIcon from '@material-ui/icons/Code';
 import InfoIcon from '@material-ui/icons/Info';
@@ -66,7 +73,7 @@ export default props => {
 					<List component="div" disablePadding>
 
 						<ListItem button component={Link} to="/user-guide/navigation" className={classes.nested}>
-							<ListItemIcon><InfoIcon /></ListItemIcon>
+							<ListItemIcon><NavigationIcon /></ListItemIcon>
 							<ListItemText primary={"Navigation"} />
 						</ListItem>
 
@@ -77,14 +84,14 @@ export default props => {
 
 						
 
-						<SubMenu icon={<HelpIcon />} label={"Settings"} className={classes.nested}>
+						<SubMenu icon={<SettingsIcon />} label={"Settings"} className={classes.nested}>
 							<List component="div" disablePadding>
 								<ListItem button component={Link} to="/user-guide/settings/battery" className={classes.nested}>
 									<ListItemIcon><WbSunnyIcon /></ListItemIcon>
 									<ListItemText primary={"Battery"} />
 								</ListItem>
 								<ListItem button component={Link} to="/user-guide/settings/display" className={classes.nested}>
-									<ListItemIcon><InfoIcon /></ListItemIcon>
+									<ListItemIcon><Brightness6Icon /></ListItemIcon>
 									<ListItemText primary={"Display"} />
 								</ListItem>
 								<ListItem button component={Link} to="/user-guide/settings/movement" className={classes.nested}>
@@ -100,24 +107,24 @@ export default props => {
 									<ListItemText primary={"Bluetooth"} />
 								</ListItem>
 								<ListItem button component={Link} to="/user-guide/settings/time" className={classes.nested}>
-									<ListItemIcon><BluetoothIcon /></ListItemIcon>
+									<ListItemIcon><AccessTimeIcon /></ListItemIcon>
 									<ListItemText primary={"Time"} />
 								</ListItem>
 								<ListItem button component={Link} to="/user-guide/settings/update" className={classes.nested}>
-									<ListItemIcon><InfoIcon /></ListItemIcon>
+									<ListItemIcon><SystemUpdateIcon /></ListItemIcon>
 									<ListItemText primary={"Update"} />
 								</ListItem>
 							</List>
 						</SubMenu>
 
-						<SubMenu icon={<InfoIcon />} label={"Apps"} className={classes.nested}>
+						<SubMenu icon={<AppsIcon />} label={"Apps"} className={classes.nested}>
 							<List component="div" disablePadding>
 								<ListItem button component={Link} to="/user-guide/apps/weather" className={classes.nested}>
 									<ListItemIcon><WbSunnyIcon /></ListItemIcon>
 									<ListItemText primary={"Weather"} />
 								</ListItem>
 								<ListItem button component={Link} to="/user-guide/apps/stop-watch" className={classes.nested}>
-									<ListItemIcon><InfoIcon /></ListItemIcon>
+									<ListItemIcon><TimerIcon /></ListItemIcon>
 									<ListItemText primary={"Stop Watch"} />
 								</ListItem>
 								<ListItem button component={Link} to="/user-guide/apps/crypto-ticker" className={classes.nested}>

@@ -12,8 +12,8 @@ export default  props => {
 
 
             <p>
-                There is a status bar that can be dragged down and gives quick access to turning wifi on or off.
-                If will is connected then you ip will be shown
+                There is a status bar that can be dragged down and gives quick access to turning wifi on or off by tipping the wifi logo.
+                If wifi is connected then you ip will be shown
             </p>
            
         </>
