@@ -145,7 +145,7 @@ export default props => {
 
 						<ListItem button component={Link} to="/user-guide/gadget-bridge" className={classes.nested}>
 							<ListItemIcon><InfoIcon /></ListItemIcon>
-							<ListItemText primary={"Gadget Bridge"} />
+							<ListItemText primary={"Gadgetbridge"} />
 						</ListItem>
 					</List>
 				</SubMenu>

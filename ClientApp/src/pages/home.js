@@ -6,14 +6,19 @@ export default  props => {
         <>
             <h2>Home</h2>
 
-            Welcome to My-TTGO-Watch a smartwatch firmware based on ESP32 from LlyGo. Currently under development!!!
+            <img src="/home/home.png" />
+
+            <p>
+                Welcome to My-TTGO-Watch a smartwatch firmware based on ESP32 from LlyGo. Currently under development!!!
+            </p>
+            
 
 
             <h3>Features</h3>
 
             Wifi  <br/>
 
-            Bluetooth - GadgetBridge (Notification from mobile), remote wifi and weather app configuration, BLE characteristics (manufacturer name, firmware revision, power level, power state and more to come)  <br/>
+            Bluetooth - Gadgetbridge (Notification from mobile), remote wifi and weather app configuration, BLE characteristics (manufacturer name, firmware revision, power level, power state and more to come)  <br/>
 
             Step Counter <br/>
 
